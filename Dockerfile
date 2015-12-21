@@ -1,9 +1,5 @@
 FROM dockette/nginx
 
-# Install Nginx
-RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
-
 # Base configuration
 ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/nginx.conf /etc/nginx/nginx.conf
 ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/mime.types /etc/nginx/mime.types
@@ -25,3 +21,7 @@ ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/h5bp/dire
 ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/h5bp/directive-only/ssl-stapling.conf /etc/nginx/h5bp/directive-only/h5bp/directive-only/ssl-stapling.conf
 ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/h5bp/directive-only/ssl.conf /etc/nginx/h5bp/directive-only/h5bp/directive-only/ssl.conf
 ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/h5bp/directive-only/x-ua-compatible.conf /etc/nginx/h5bp/directive-only/h5bp/directive-only/x-ua-compatible.conf
+
+EXPOSE 80 443
+
+CMD ["/start.sh"]
