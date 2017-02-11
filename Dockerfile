@@ -24,4 +24,4 @@ ADD https://raw.githubusercontent.com/h5bp/server-configs-nginx/master/h5bp/dire
 
 EXPOSE 80 443
 
-CMD ["/start.sh"]
+CMD ["nginx", "-g", "daemon off;"]
